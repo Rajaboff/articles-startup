@@ -16,6 +16,14 @@ button {
   }
 }
 
+.secondary {
+  @apply bg-gray-200 font-medium;
+
+  &:hover {
+    @apply bg-gray-300
+  }
+}
+
 .xs {
   @apply rounded-md px-2.5 py-1 text-xs;
 }

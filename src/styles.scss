@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @import './assets/styles/button.scss';
+@import './assets/styles/input.scss';
+@import './assets/styles/textarea.scss';
+@import './assets/styles/select.scss';
 
 * {
   padding: 0;

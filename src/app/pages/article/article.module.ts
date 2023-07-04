@@ -12,12 +12,16 @@ const routes: Routes = [
   {
     path: '**',
     redirectTo: 'new',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];
 
 @NgModule({
   declarations: [ArticleComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), ComponentsModule],
+  imports: [
+    CommonModule,
+    RouterModule.forChild(routes),
+    ComponentsModule
+  ],
 })
 export class ArticleModule {}

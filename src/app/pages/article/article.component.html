@@ -1,3 +1,16 @@
-<p>
-  article works!
-</p>
+<div class="article container p-4 grid gap-3">
+  <input type="text" placeholder="Введите заголовок" />
+
+  <select>
+    <option>Выберите автора</option>
+    <option [value]="author.id" *ngFor="let author of authors">
+      {{ author.name }}
+    </option>
+  </select>
+
+  <textarea rows="5" placeholder="Введите содержимое"></textarea>
+
+  <div class="flex justify-end">
+    <button class="sm primary">Сохранить</button>
+  </div>
+</div>
