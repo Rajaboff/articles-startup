@@ -2,11 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@import './assets/styles/button.scss';
+
 * {
   padding: 0;
   margin: 0;
   line-height: 1;
   outline: none;
+  transition: 0.2s all ease;
 }
 
 html, body {

@@ -1,0 +1,25 @@
+button {
+  &:hover {
+    transform: scale(1.02);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.primary {
+  @apply bg-purple-700 text-white font-medium;
+
+  &:hover {
+    @apply bg-purple-800
+  }
+}
+
+.xs {
+  @apply rounded-md px-2.5 py-1 text-xs;
+}
+
+.sm {
+  @apply rounded-lg px-3 py-1.5 text-sm;
+}
