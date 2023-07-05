@@ -1,7 +1,23 @@
 <div class="home w-full">
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
-  <app-card></app-card>
+  <ng-container *ngIf="articleService.articles.length">
+    <app-card
+      [routerLink]="'/article/' + article.id"
+      *ngFor="let article of articleService.articles"
+    ></app-card>
+  </ng-container>
+</div>
+
+<div
+  *ngIf="!articleService.articles.length"
+  class="h-80 flex flex-col items-center justify-center"
+>
+  <h1 class="text-3xl mb-5 text-center text-gray-400">Тут пока пусто</h1>
+  <h1 class="text-3xl text-center text-gray-400">
+    Нажмите кнопку
+    <span
+      routerLink="/article/new"
+      class="px-4 text-2xl py-3 ml-2 rounded-xl bg-gray-200 hover:text-gray-500 cursor-pointer"
+      >Создать</span
+    >
+  </h1>
 </div>

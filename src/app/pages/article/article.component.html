@@ -1,16 +1,29 @@
-<div class="article container p-4 grid gap-3">
-  <input type="text" placeholder="Введите заголовок" />
+<div class="article container p-4 grid gap-4" [formGroup]="form">
+  <input
+    type="text"
+    maxlength="100"
+    formControlName="title"
+    placeholder="Введите заголовок"
+  />
 
-  <select>
-    <option>Выберите автора</option>
-    <option [value]="author.id" *ngFor="let author of authors">
+  <select *ngIf="authors.length" formControlName="authorId">
+    <option [ngValue]="null">Выберите автора</option>
+    <option
+      [selected]="authorId.value === author.id"
+      [ngValue]="author.id"
+      *ngFor="let author of authors"
+    >
       {{ author.name }}
     </option>
   </select>
 
-  <textarea rows="5" placeholder="Введите содержимое"></textarea>
+  <textarea
+    rows="10"
+    formControlName="content"
+    placeholder="Введите содержимое"
+  ></textarea>
 
   <div class="flex justify-end">
-    <button class="sm primary">Сохранить</button>
+    <button class="sm primary" (click)="setArticle()">Сохранить</button>
   </div>
 </div>
