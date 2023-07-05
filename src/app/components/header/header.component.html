@@ -1,4 +1,6 @@
-<div class="header w-full bg-white border-b border-gray-200">
+<div
+  class="header fixed top-0 left-0 z-10 w-full bg-white border-b border-gray-200"
+>
   <div class="container px-3 flex items-center justify-between h-14 mx-auto">
     <h1
       class="header__logo select-none font-bold cursor-pointer hover:text-purple-700"
@@ -7,22 +9,42 @@
       ARTICLES
     </h1>
 
-    <button
-      *ngIf="showCreatBtn"
-      class="sm secondary flex items-center gap-1.5"
-      routerLink="/article/new"
-    >
-      <span class="material-icons-round text-sm"> article </span>
-      Создать
-    </button>
+    <div class="flex gap-2">
+      <button
+        *ngIf="showCreatBtn"
+        class="sm secondary flex items-center gap-1.5"
+        routerLink="/article/new"
+      >
+        <span class="material-icons-round text-sm"> article </span>
+        Создать
+      </button>
 
-    <button
-      *ngIf="!showCreatBtn"
-      class="sm secondary flex items-center gap-1.5"
-      routerLink="/"
-    >
-      <span class="material-icons-round text-sm"> home </span>
-      На главную
-    </button>
+      <button
+        *ngIf="!showCreatBtn"
+        class="sm secondary flex items-center gap-1.5"
+        routerLink="/"
+      >
+        <span class="material-icons-round text-sm"> home </span>
+        На главную
+      </button>
+
+      <!--  -->
+
+      <button
+        *ngIf="(userService.isAdmin | async) === roles.Admin"
+        class="sm secondary"
+        (click)="userService.isAdmin.next(roles.Client)"
+      >
+        Клиент
+      </button>
+
+      <button
+        *ngIf="(userService.isAdmin | async) === roles.Client"
+        class="sm secondary"
+        (click)="userService.isAdmin.next(roles.Admin)"
+      >
+        Админ
+      </button>
+    </div>
   </div>
 </div>

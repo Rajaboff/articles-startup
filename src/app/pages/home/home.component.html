@@ -1,4 +1,11 @@
-<div class="home px-3 w-full">
+<div
+  class="stats max-h-80 mb-6 mt-3"
+  *ngIf="(userService.isAdmin | async) === roles.Admin"
+>
+  <canvas id="stat" class="w-full mx-auto" #stat></canvas>
+</div>
+
+<div class="articles px-3 mt-3 w-full">
   <ng-container *ngIf="articleService.articles.length">
     <app-card
       [routerLink]="'/article/' + article.id"

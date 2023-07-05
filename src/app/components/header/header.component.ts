@@ -5,6 +5,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { UserRole, UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,13 @@ import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 export class HeaderComponent implements OnInit {
   showCreatBtn: boolean = true;
 
-  constructor(private router: Router, private cd: ChangeDetectorRef) {}
+  roles = UserRole;
+
+  constructor(
+    private router: Router,
+    public userService: UserService,
+    private cd: ChangeDetectorRef
+  ) {}
 
   ngOnInit() {
     this.router.events.subscribe((event) => {
