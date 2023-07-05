@@ -1,20 +1,18 @@
 import { Injectable } from '@angular/core';
-import { Observable, map, switchMap } from 'rxjs';
 import { Article } from '../models/article';
-import { HttpClient } from '@angular/common/http';
+
+export const storageKey: string = 'articles';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ArticleService {
-  private storageKey: string = 'articles';
-
   articles: Article[] = [];
 
   constructor() {}
 
   getArticles(): void {
-    this.articles = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+    this.articles = JSON.parse(localStorage.getItem(storageKey) || '[]');
   }
 
   setArticle(article: Article): void {
@@ -25,7 +23,7 @@ export class ArticleService {
       this.articles.push(article);
     }
 
-    localStorage.setItem(this.storageKey, JSON.stringify(this.articles));
+    localStorage.setItem(storageKey, JSON.stringify(this.articles));
   }
 
   getArticle(id: number): Article | undefined {
@@ -36,6 +34,7 @@ export class ArticleService {
 
   deleteArticle(id: number): void {
     this.articles = this.articles.filter((article) => article.id != id);
-    localStorage.setItem(this.storageKey, JSON.stringify(this.articles));
+    console.log(id, this.articles)
+    localStorage.setItem(storageKey, JSON.stringify(this.articles));
   }
 }

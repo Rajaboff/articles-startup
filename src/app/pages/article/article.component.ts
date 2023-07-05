@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Article } from 'src/app/models/article';
-import { Author } from 'src/app/models/author';
 import { ArticleService } from 'src/app/services/article.service';
 import { AuthorService } from 'src/app/services/author.service';
 
