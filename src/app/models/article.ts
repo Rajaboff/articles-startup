@@ -4,4 +4,5 @@ export interface Article {
   content: string;
   id: number;
   createdAt: string;
+  publishAt: string;
 }

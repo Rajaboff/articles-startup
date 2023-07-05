@@ -26,8 +26,16 @@
     placeholder="Введите содержимое"
   ></textarea>
 
+  <input type="date" formControlName="publishAt" />
+
   <div class="flex justify-between">
-    <button class="sm secondary" (click)="deleteArticle()">Удалить</button>
+    <button
+      class="sm secondary"
+      [class]="showDeleteBtn ? '' : 'pointer-events-none opacity-30'"
+      (click)="deleteArticle()"
+    >
+      Удалить
+    </button>
     <button class="sm primary" (click)="setArticle()">Сохранить</button>
   </div>
 </div>

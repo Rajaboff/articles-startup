@@ -1,11 +1,20 @@
-<div class="home w-full">
+<div class="home px-3 w-full">
   <ng-container *ngIf="articleService.articles.length">
     <app-card
       [routerLink]="'/article/' + article.id"
-      *ngFor="let article of articleService.articles"
+      *ngFor="let article of articlesByPage(page)"
       [article]="article"
     ></app-card>
   </ng-container>
+</div>
+
+<div class="w-full mt-5 flex items-center justify-center">
+  <app-pagination
+    [activePage]="page"
+    (setActive)="setPagination($event)"
+    [totalCount]="totalCount"
+    [pageSize]="pageSize"
+  ></app-pagination>
 </div>
 
 <div

@@ -11,12 +11,15 @@ import { AuthorService } from 'src/app/services/author.service';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
+  showDeleteBtn: boolean = false;
+
   form: FormGroup;
 
   id: FormControl = new FormControl(null);
   title: FormControl = new FormControl('', [Validators.required]);
   content: FormControl = new FormControl('', [Validators.required]);
   authorId: FormControl = new FormControl(null, [Validators.required]);
+  publishAt: FormControl = new FormControl('', [Validators.required]);
 
   constructor(
     public authorService: AuthorService,
@@ -29,12 +32,19 @@ export class ArticleComponent implements OnInit {
       title: this.title,
       content: this.content,
       authorId: this.authorId,
+      publishAt: this.publishAt,
     });
   }
 
   ngOnInit() {
     this.authorService.getAuthors();
-    this.route.snapshot.data['data'] && this.setValues();
+
+    if (this.route.snapshot.data['data']) {
+      this.showDeleteBtn = true;
+      this.setValues();
+    } else {
+      this.showDeleteBtn = false;
+    }
   }
 
   deleteArticle(): void {
@@ -54,18 +64,25 @@ export class ArticleComponent implements OnInit {
         ...this.form.value,
         id: newId,
         createdAt: createdDate,
+        publishAt: this.getISODate(this.publishAt.value),
       });
+
+      this.router.navigateByUrl('/');
     }
   }
 
+  getISODate(date: string): string {
+    return new Date(date).toISOString();
+  }
+
   setValues(): void {
-    const { title, content, id, authorId } = this.route.snapshot.data[
-      'data'
-    ] as Article;
+    const { title, content, id, authorId, publishAt } = this.route.snapshot
+      .data['data'] as Article;
 
     this.title.setValue(title);
     this.content.setValue(content);
     this.id.setValue(id);
     this.authorId.setValue(authorId);
+    this.publishAt.setValue(publishAt);
   }
 }

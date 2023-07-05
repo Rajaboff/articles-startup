@@ -1,0 +1,36 @@
+button {
+  @apply border border-gray-200 rounded-md;
+
+  padding: 6px 8px;
+  background-color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+  color: #8f92a1;
+
+  &:hover {
+    transform: scale(1.05);
+    color: black;
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+input {
+  padding: 0px 8px;
+  height: 34px;
+  border-radius: 4px;
+  background-color: #ffffff;
+  font-size: 14px;
+  min-width: 40px;
+  text-align: center;
+
+  &::placeholder {
+    color: #8f92a1;
+  }
+
+  &:hover {
+    background-color: #ededf1;
+  }
+}

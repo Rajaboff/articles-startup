@@ -1,7 +1,28 @@
 <div class="header w-full bg-white border-b border-gray-200">
-  <div class="container flex items-center justify-between p-4 mx-auto">
-    <h1 class="header__logo select-none font-bold cursor-pointer hover:text-purple-700" routerLink="/">ARTICLES</h1>
+  <div class="container px-3 flex items-center justify-between h-14 mx-auto">
+    <h1
+      class="header__logo select-none font-bold cursor-pointer hover:text-purple-700"
+      routerLink="/"
+    >
+      ARTICLES
+    </h1>
 
-    <button class="sm secondary" routerLink="/article/new">Создать</button>
+    <button
+      *ngIf="showCreatBtn"
+      class="sm secondary flex items-center gap-1.5"
+      routerLink="/article/new"
+    >
+      <span class="material-icons-round text-sm"> article </span>
+      Создать
+    </button>
+
+    <button
+      *ngIf="!showCreatBtn"
+      class="sm secondary flex items-center gap-1.5"
+      routerLink="/"
+    >
+      <span class="material-icons-round text-sm"> home </span>
+      На главную
+    </button>
   </div>
 </div>

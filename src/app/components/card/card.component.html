@@ -1,25 +1,39 @@
 <div
-  class="card h-full flex group flex-col gap-4 items-center justify-between bg-white p-5 border w-full border-gray-200 rounded-xl cursor-pointer"
+  class="card h-full flex group flex-col gap-5 items-center justify-between bg-white p-5 border w-full border-gray-200 rounded-xl cursor-pointer"
 >
-  <p
-    *ngIf="(authorService.authors | async)?.length"
-    class="text-xs group-hover:bg-purple-200 group-hover:text-purple-800 card__author px-3 py-1 rounded-full bg-purple-100 text-purple-700"
-  >
-    {{ authorService.getAuthor(article.authorId)?.name }}
-  </p>
+  <div class="flex items-center flex-wrap gap-1.5">
+    <p
+      *ngIf="(authorService.authors | async)?.length"
+      class="text-xs flex items-center gap-1 group-hover:text-purple-800 card__author px-3 py-1 rounded-full bg-purple-100 text-purple-700"
+    >
+      <span class="material-icons-round text-sm"> person </span>
+      {{ authorService.getAuthor(article.authorId)?.name }}
+    </p>
+    <p
+      *ngIf="(authorService.authors | async)?.length"
+      class="text-xs flex items-center gap-1 group-hover:text-green-800 card__author px-3 py-1 rounded-full bg-green-100 text-green-700"
+    >
+      <span class="material-icons-round text-sm"> event </span>
+      {{ article.publishAt | date : "dd.MM.YYYY" }}
+    </p>
+  </div>
 
-  <div class="flex items-center justify-center flex-col gap-4">
+  <div class="flex items-center justify-center flex-col gap-2">
     <h1
       class="card__title text-center leading-7 group-hover:text-purple-700 text-2xl font-semibold"
     >
-      {{ article.title }}
+      {{
+        article.title.length > 40
+          ? (article.title | slice : 0 : 40) + "..."
+          : article.title
+      }}
     </h1>
 
     <p
       class="card__content text-xs text-center group-hover:text-black text-gray-500"
     >
       {{
-        article.content.length > 100
+        article.content.length > 60
           ? (article.content | slice : 0 : 60) + "..."
           : article.content
       }}
@@ -27,8 +41,9 @@
   </div>
 
   <p
-    class="card__date text-xs text-center group-hover:text-gray-600 font-light text-gray-400"
+    class="card__date flex items-center justify-center gap-2 text-xs text-center group-hover:text-gray-600 font-light text-gray-400"
   >
+    <span class="material-icons-round text-xs"> edit </span>
     {{ article.createdAt | date : "dd.MM.YYYY, HH:mm:ss" }}
   </p>
 </div>

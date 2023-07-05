@@ -16,6 +16,7 @@ describe('ArticleService', () => {
         content: 'Lorem ipsum dolor sit amet.',
         id: 1,
         createdAt: '2021-07-01',
+        publishAt: '2021-07-03',
       },
       {
         title: 'Article 2',
@@ -23,6 +24,7 @@ describe('ArticleService', () => {
         content: 'Pellentesque habitant morbi.',
         id: 2,
         createdAt: '2021-07-02',
+        publishAt: '2021-07-03',
       },
     ];
 
@@ -40,6 +42,7 @@ describe('ArticleService', () => {
       content: 'Lorem ipsum dolor sit amet.',
       id: 3,
       createdAt: '2021-07-03',
+      publishAt: '2021-07-03',
     };
 
     articleService.setArticle(article);
@@ -55,6 +58,7 @@ describe('ArticleService', () => {
       content: 'Updated content.',
       id: 1,
       createdAt: '2021-07-01',
+      publishAt: '2021-07-03',
     };
 
     localStorage.setItem(
@@ -84,6 +88,7 @@ describe('ArticleService', () => {
         content: 'Lorem ipsum dolor sit amet.',
         id: 1,
         createdAt: '2021-07-01',
+        publishAt: '2021-07-03',
       },
       {
         title: 'Article 2',
@@ -91,6 +96,7 @@ describe('ArticleService', () => {
         content: 'Pellentesque habitant morbi.',
         id: 2,
         createdAt: '2021-07-02',
+        publishAt: '2021-07-03',
       },
     ];
 
@@ -109,6 +115,7 @@ describe('ArticleService', () => {
         content: 'Lorem ipsum dolor sit amet.',
         id: 1,
         createdAt: '2021-07-01',
+        publishAt: '2021-07-03',
       },
       {
         title: 'Article 2',
@@ -116,6 +123,7 @@ describe('ArticleService', () => {
         content: 'Pellentesque habitant morbi.',
         id: 2,
         createdAt: '2021-07-02',
+        publishAt: '2021-07-03',
       },
     ];
 

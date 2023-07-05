@@ -1,0 +1,30 @@
+<div class="pagination-v2 flex items-start gap-1" *ngIf="totalCount > pageSize">
+  <button (click)="emitActivePage(1)">
+    <span class="material-icons-round text-sm scale-125"> first_page </span>
+  </button>
+  <button (click)="activePage > 1 && emitActivePage(activePage - 1)">
+    <span class="material-icons-round text-sm scale-125">
+      keyboard_arrow_left
+    </span>
+  </button>
+
+  <div class="flex items-center gap-2 mx-3">
+    <input
+      type="text"
+      [ngStyle]="{width: pageCount.toString().length * 12 + 'px'}"
+      [ngModel]="activePage"
+      (ngModelChange)="emitActivePage($event)"
+      placeholder="1"
+    />
+    <p class="text-sm">/ {{ pageCount }}</p>
+  </div>
+
+  <button (click)="activePage < pageCount && emitActivePage(+activePage + 1)">
+    <span class="material-icons-round text-sm scale-125">
+      keyboard_arrow_right
+    </span>
+  </button>
+  <button (click)="emitActivePage(pageCount)">
+    <span class="material-icons-round text-sm scale-125"> last_page </span>
+  </button>
+</div>
