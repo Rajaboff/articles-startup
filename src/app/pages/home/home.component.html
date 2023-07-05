@@ -3,6 +3,7 @@
     <app-card
       [routerLink]="'/article/' + article.id"
       *ngFor="let article of articleService.articles"
+      [article]="article"
     ></app-card>
   </ng-container>
 </div>

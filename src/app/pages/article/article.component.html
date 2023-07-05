@@ -6,12 +6,15 @@
     placeholder="Введите заголовок"
   />
 
-  <select *ngIf="authors.length" formControlName="authorId">
+  <select
+    *ngIf="(authorService.authors | async)?.length"
+    formControlName="authorId"
+  >
     <option [ngValue]="null">Выберите автора</option>
     <option
       [selected]="authorId.value === author.id"
       [ngValue]="author.id"
-      *ngFor="let author of authors"
+      *ngFor="let author of authorService.authors | async"
     >
       {{ author.name }}
     </option>
@@ -23,7 +26,8 @@
     placeholder="Введите содержимое"
   ></textarea>
 
-  <div class="flex justify-end">
+  <div class="flex justify-between">
+    <button class="sm secondary" (click)="deleteArticle()">Удалить</button>
     <button class="sm primary" (click)="setArticle()">Сохранить</button>
   </div>
 </div>

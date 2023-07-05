@@ -12,8 +12,6 @@ import { AuthorService } from 'src/app/services/author.service';
   styleUrls: ['./article.component.scss'],
 })
 export class ArticleComponent implements OnInit {
-  authors: Author[] = [];
-
   form: FormGroup;
 
   id: FormControl = new FormControl(null);
@@ -22,7 +20,7 @@ export class ArticleComponent implements OnInit {
   authorId: FormControl = new FormControl(null, [Validators.required]);
 
   constructor(
-    private authorService: AuthorService,
+    public authorService: AuthorService,
     private route: ActivatedRoute,
     private router: Router,
     public articleService: ArticleService
@@ -36,13 +34,16 @@ export class ArticleComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.authorService.getAuthors().subscribe((authors) => {
-      this.authors = authors;
-    });
-
-    console.log(this.route.snapshot.data['data']);
-
+    this.authorService.getAuthors();
     this.route.snapshot.data['data'] && this.setValues();
+  }
+
+  deleteArticle(): void {
+    if (this.id.value) {
+      this.articleService.deleteArticle(this.id.value);
+      this.articleService.getArticles();
+      this.router.navigateByUrl('/');
+    }
   }
 
   setArticle(): void {

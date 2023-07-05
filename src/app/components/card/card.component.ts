@@ -1,4 +1,6 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input } from '@angular/core';
+import { Article } from 'src/app/models/article';
+import { AuthorService } from 'src/app/services/author.service';
 
 @Component({
   selector: 'app-card',
@@ -7,7 +9,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardComponent implements OnInit {
-  constructor() {}
+  @Input() article!: Article;
+
+  constructor(public authorService: AuthorService) {}
 
   ngOnInit() {}
 }
