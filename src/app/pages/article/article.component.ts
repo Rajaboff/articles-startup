@@ -75,6 +75,16 @@ export class ArticleComponent implements OnInit {
     return new Date(date).toISOString();
   }
 
+  convertToYYYYMMDD(isoDate: string): string {
+    const date = new Date(isoDate);
+
+    const year = date.getFullYear();
+    const month = ('0' + (date.getMonth() + 1)).slice(-2);
+    const day = ('0' + date.getDate()).slice(-2);
+
+    return `${year}-${month}-${day}`;
+  }
+
   setValues(): void {
     const { title, content, id, authorId, publishAt } = this.route.snapshot
       .data['data'] as Article;
@@ -83,6 +93,6 @@ export class ArticleComponent implements OnInit {
     this.content.setValue(content);
     this.id.setValue(id);
     this.authorId.setValue(authorId);
-    this.publishAt.setValue(publishAt);
+    this.publishAt.setValue(this.convertToYYYYMMDD(publishAt));
   }
 }

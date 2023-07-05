@@ -20,7 +20,6 @@ export class AuthorService {
   }
 
   getAuthor(id: number): Author | undefined {
-    console.log(this.authors);
     return this.authors.value.find((author) => author.id == id);
   }
 }

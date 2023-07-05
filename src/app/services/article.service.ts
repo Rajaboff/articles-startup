@@ -34,7 +34,6 @@ export class ArticleService {
 
   deleteArticle(id: number): void {
     this.articles = this.articles.filter((article) => article.id != id);
-    console.log(id, this.articles)
     localStorage.setItem(storageKey, JSON.stringify(this.articles));
   }
 }
